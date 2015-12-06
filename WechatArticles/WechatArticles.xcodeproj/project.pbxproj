@@ -969,6 +969,7 @@
 				D9D7EBDC1C143308006633D9 /* Resources */,
 				D9D7F03F1C143BA3006633D9 /* ShellScript */,
 				D9D7F0641C14412B006633D9 /* Embed Frameworks */,
+				D9D7F0741C14518D006633D9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1107,6 +1108,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run 7b302e714d8e9158a51f5a96fbe1113a28d14e2d 839529ed6053afc5e181b7dda84434a950953bb115d9c661fca7c2f29fa8a32c";
+		};
+		D9D7F0741C14518D006633D9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK; do\nEXTRACTED_ARCHS=()\n\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\n\nfor ARCH in $ARCHS; do\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\n\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\n\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\nrm \"${EXTRACTED_ARCHS[@]}\"\n\n/usr/bin/codesign -f -s \"${CODE_SIGN_IDENTITY}\" $FRAMEWORK\ndone";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1455,7 +1469,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jiabin Li (GW7ZRB8ABG)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

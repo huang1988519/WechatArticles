@@ -47,9 +47,8 @@ import UIKit
     func requestNewestImageFromBing() {
         let address = "http://tu.ihuan.me/tu/api/bing/go/"
         let url     = NSURL(string: address)
-        let placeHolder = UIImage(named: "cover")
         var option :KingfisherOptionsInfo? = nil
-        if isFirstStartUpFromToday() {
+        if isFirstStartUpFromToday() == true {
             option = [.Options( .ForceRefresh)]
         }else{
         }
