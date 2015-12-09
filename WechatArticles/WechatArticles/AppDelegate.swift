@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AVOSCloud
+//import AVOSCloud
 import Fabric
 import Crashlytics
 
@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //配置 崩溃 日志
         Fabric.with([Crashlytics.self])
         //配置 leanCloud
-        AVOSCloud.setApplicationId("qfrsSEumQvfkvyR7gMSXErKg", clientKey: "nTSTQrCGKDFm9zQoexAJHhGW")
+//        AVOSCloud.setApplicationId("qfrsSEumQvfkvyR7gMSXErKg", clientKey: "nTSTQrCGKDFm9zQoexAJHhGW")
         //配置缓存
         ImageCache.defaultCache.calculateDiskCacheSizeWithCompletionHandler { (size) -> () in
             log.debug("图片缓存 %d M", args: size/1024/1024)

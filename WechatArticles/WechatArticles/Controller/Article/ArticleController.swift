@@ -9,7 +9,7 @@
 import UIKit
 //import Spring
 //import JLToast
-import AVOSCloud
+//import AVOSCloud
 
 
 
@@ -56,9 +56,11 @@ class ArticleController: UIViewController ,UIWebViewDelegate,UIScrollViewDelegat
         shareView.copyClickBlock = {[unowned self](url) -> Void in
             self.copyUrl()
         }
+        /*
         shareView.favoriteClickBlock = {[unowned self](url) -> Void in
             self.favorite()
         }
+*/
         shareView.show(self)
     }
     func changeFontSize(size:Double) {
@@ -79,6 +81,7 @@ class ArticleController: UIViewController ,UIWebViewDelegate,UIScrollViewDelegat
             JLToast.makeText("复制成功").show()
         }
     }
+    /*
     func favorite() {
         if GetUserInfo() == nil {
             JLToast.makeText("请先登录才能使用收藏功能").show()
@@ -125,6 +128,7 @@ class ArticleController: UIViewController ,UIWebViewDelegate,UIScrollViewDelegat
         }
         return false
     }
+*/
     //MARK: -- UIWebViewDelegate
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
         self.hideHUD()

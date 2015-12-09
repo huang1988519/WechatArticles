@@ -31,7 +31,7 @@
 
 
 import UIKit
-import AVOSCloud
+//import AVOSCloud
 import CoreLocation
 //import JLToast
 //import Kingfisher
@@ -65,6 +65,7 @@ class SettingController: UITableViewController, CLLocationManagerDelegate,UIView
         locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
         //ios 8 request
         locationManager.requestWhenInUseAuthorization()
+
         refreshWeather()
         
         //如果debug环境设置为 60s 刷新一次
@@ -84,8 +85,11 @@ class SettingController: UITableViewController, CLLocationManagerDelegate,UIView
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        /*
         refreshUserInfo()
+*/
     }
+    /*
     /**
      退出登录
      
@@ -116,11 +120,13 @@ class SettingController: UITableViewController, CLLocationManagerDelegate,UIView
         isLogin = false
         }
     }
+*/
     /**
      刷新 坐标
      */
     func refreshWeather() {
         log.debug("重新定位")
+        locationManager.delegate = self;
         locationManager.startUpdatingLocation()
     }
     /**
@@ -131,11 +137,11 @@ class SettingController: UITableViewController, CLLocationManagerDelegate,UIView
     func requestWeather(location:CLLocation) {
         let coordinate = location.coordinate
         
-        let locationString = "location=\(coordinate.latitude),\(coordinate.longitude)"
+        let locationString = "location=\(coordinate.longitude),\(coordinate.latitude)"
         let urlString = "http://api.map.baidu.com/telematics/v3/weather?\(locationString)&output=json&ak=\(ak)"
         let url = NSURL(string: urlString)
         let request = NSMutableURLRequest(URL: url!)
-        request.addValue("", forHTTPHeaderField: "")
+//        request.addValue("", forHTTPHeaderField: "")
         let task = session.dataTaskWithRequest(request) { [unowned self](data, response, error) -> Void in
             if let res = response as? NSHTTPURLResponse {
                 if res.statusCode != 200 {
@@ -159,11 +165,14 @@ class SettingController: UITableViewController, CLLocationManagerDelegate,UIView
                         return
                     }
                 }
-                if let dic = object!["results"] as? [String:AnyObject] {
-                    self.parserWeather(dic)
-                }else{
-                    log.error("百度地图返回格式错误")
+                guard let  dic = object!["results"] as? [[String:AnyObject]] else {
+                    log.error("百度地图返回格式错误 \( object!["results"])")
+                    return
                 }
+                if dic.count > 0  {
+                    self.parserWeather(dic[0])
+                }
+                
             }catch {
                 log.error("json 解析异常")
             }
@@ -173,8 +182,8 @@ class SettingController: UITableViewController, CLLocationManagerDelegate,UIView
     }
     func parserWeather(dic :[String:AnyObject]) {
         log.debug("天气信息为:\(dic)")
-        let currentCity = dic["currentCity"] as? String
-        let pm25 = dic["pm25"] as? String
+        let currentCity = dic["currentCity"] as? String!
+        let pm25 = dic["pm25"] as? String!
         let weatherList = dic["weather_data"] as? [[String:AnyObject]]
         
         var weather :[String:AnyObject]?
@@ -183,8 +192,8 @@ class SettingController: UITableViewController, CLLocationManagerDelegate,UIView
         }
         
         cityLabel.text = currentCity
-        pmLabel.text   = "\(pm25) PM25"
-        if let tianqi = weather!["weather"] as? String {
+        pmLabel.text   = "\(pm25!) -- PM25"
+        if let tianqi = weather!["weather"] as? String! {
             weatherLabel.text = tianqi
         }
     }
@@ -196,6 +205,7 @@ class SettingController: UITableViewController, CLLocationManagerDelegate,UIView
         }
         let location = locations.first
         requestWeather(location!)
+        locationManager.delegate = nil;
         locationManager.stopUpdatingLocation()
     }
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
@@ -227,6 +237,15 @@ class SettingController: UITableViewController, CLLocationManagerDelegate,UIView
     //MARK: --
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == 0 {
+            clearImageCache()
+        }
+        if indexPath.row == 1 {
+            let aboutVC = AboutController.Nib()
+            aboutVC.transitioningDelegate = self
+            self.presentViewController(aboutVC, animated: true, completion: nil)
+        }
+        /*
+        if indexPath.row == 0 {
             if GetUserInfo() != nil && (isLogin == true) {
                 
             }else{
@@ -239,9 +258,11 @@ class SettingController: UITableViewController, CLLocationManagerDelegate,UIView
                 JLToast.makeText("你好,最美陌生人").show()
                 return
             }
+        
             let favoriteVC = favoriteController.Nib()
             favoriteVC.transitioningDelegate = self
             self.presentViewController(favoriteVC, animated: true, completion: nil)
+
         }
         if indexPath.row == 2 {
             clearImageCache()
@@ -251,6 +272,7 @@ class SettingController: UITableViewController, CLLocationManagerDelegate,UIView
             aboutVC.transitioningDelegate = self
             self.presentViewController(aboutVC, animated: true, completion: nil)
         }
+*/
         
     }
     //MARK: -- Animatin Transition

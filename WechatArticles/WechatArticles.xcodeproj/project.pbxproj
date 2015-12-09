@@ -22,14 +22,12 @@
 		D9D7EC481C1433F0006633D9 /* CatogariesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7EC1E1C1433F0006633D9 /* CatogariesController.swift */; };
 		D9D7EC491C1433F0006633D9 /* HotCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7EC201C1433F0006633D9 /* HotCategoryController.swift */; };
 		D9D7EC4A1C1433F0006633D9 /* HotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7EC211C1433F0006633D9 /* HotController.swift */; };
-		D9D7EC4B1C1433F0006633D9 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7EC231C1433F0006633D9 /* LoginController.swift */; };
 		D9D7EC4C1C1433F0006633D9 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7EC241C1433F0006633D9 /* MenuController.swift */; };
 		D9D7EC4D1C1433F0006633D9 /* LinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7EC261C1433F0006633D9 /* LinesView.swift */; };
 		D9D7EC4E1C1433F0006633D9 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7EC271C1433F0006633D9 /* RoundButton.swift */; };
 		D9D7EC4F1C1433F0006633D9 /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7EC281C1433F0006633D9 /* RoundView.swift */; };
 		D9D7EC501C1433F0006633D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7EC291C1433F0006633D9 /* ViewController.swift */; };
 		D9D7EC511C1433F0006633D9 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7EC2B1C1433F0006633D9 /* AboutController.swift */; };
-		D9D7EC521C1433F0006633D9 /* favoriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7EC2C1C1433F0006633D9 /* favoriteController.swift */; };
 		D9D7EC531C1433F0006633D9 /* SettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7EC2D1C1433F0006633D9 /* SettingController.swift */; };
 		D9D7EC541C1433F0006633D9 /* HadRead.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7EC2F1C1433F0006633D9 /* HadRead.swift */; };
 		D9D7EC551C1433F0006633D9 /* Cus+NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7EC311C1433F0006633D9 /* Cus+NSDate.swift */; };
@@ -60,7 +58,6 @@
 		D9D7EF361C1435A8006633D9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7EF331C1435A8006633D9 /* Color.swift */; };
 		D9D7EF371C1435A8006633D9 /* Loggerithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7EF341C1435A8006633D9 /* Loggerithm.swift */; };
 		D9D7EF381C1435A8006633D9 /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7EF351C1435A8006633D9 /* Type.swift */; };
-		D9D7EF5C1C14374C006633D9 /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D7EF5B1C14374C006633D9 /* AVOSCloud.framework */; };
 		D9D7EF621C143790006633D9 /* JLToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7EF5F1C143790006633D9 /* JLToast.swift */; };
 		D9D7EF631C143791006633D9 /* JLToastCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7EF601C143790006633D9 /* JLToastCenter.swift */; };
 		D9D7EF641C143791006633D9 /* JLToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7EF611C143790006633D9 /* JLToastView.swift */; };
@@ -169,8 +166,6 @@
 		D9D7F05A1C143E68006633D9 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7F04D1C143E68006633D9 /* UIImage+Extension.swift */; };
 		D9D7F05B1C143E68006633D9 /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7F04E1C143E68006633D9 /* UIImageView+Kingfisher.swift */; };
 		D9D7F05F1C1440E7006633D9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D7F05E1C1440E7006633D9 /* CFNetwork.framework */; };
-		D9D7F0601C14412B006633D9 /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D7EF5B1C14374C006633D9 /* AVOSCloud.framework */; };
-		D9D7F0611C14412B006633D9 /* AVOSCloud.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D9D7EF5B1C14374C006633D9 /* AVOSCloud.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D9D7F0671C144187006633D9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D7F0661C144187006633D9 /* SystemConfiguration.framework */; };
 		D9D7F0691C144191006633D9 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D7F0681C144191006633D9 /* MobileCoreServices.framework */; };
 		D9D7F06B1C144199006633D9 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D7F06A1C144199006633D9 /* CoreTelephony.framework */; };
@@ -204,7 +199,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D9D7F0611C14412B006633D9 /* AVOSCloud.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 1;
@@ -233,14 +227,12 @@
 		D9D7EC1E1C1433F0006633D9 /* CatogariesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatogariesController.swift; sourceTree = "<group>"; };
 		D9D7EC201C1433F0006633D9 /* HotCategoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotCategoryController.swift; sourceTree = "<group>"; };
 		D9D7EC211C1433F0006633D9 /* HotController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotController.swift; sourceTree = "<group>"; };
-		D9D7EC231C1433F0006633D9 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		D9D7EC241C1433F0006633D9 /* MenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		D9D7EC261C1433F0006633D9 /* LinesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinesView.swift; sourceTree = "<group>"; };
 		D9D7EC271C1433F0006633D9 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		D9D7EC281C1433F0006633D9 /* RoundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
 		D9D7EC291C1433F0006633D9 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D9D7EC2B1C1433F0006633D9 /* AboutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
-		D9D7EC2C1C1433F0006633D9 /* favoriteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = favoriteController.swift; sourceTree = "<group>"; };
 		D9D7EC2D1C1433F0006633D9 /* SettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingController.swift; sourceTree = "<group>"; };
 		D9D7EC2F1C1433F0006633D9 /* HadRead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HadRead.swift; sourceTree = "<group>"; };
 		D9D7EC311C1433F0006633D9 /* Cus+NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Cus+NSDate.swift"; sourceTree = "<group>"; };
@@ -271,7 +263,6 @@
 		D9D7EF331C1435A8006633D9 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		D9D7EF341C1435A8006633D9 /* Loggerithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loggerithm.swift; sourceTree = "<group>"; };
 		D9D7EF351C1435A8006633D9 /* Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Type.swift; sourceTree = "<group>"; };
-		D9D7EF5B1C14374C006633D9 /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloud.framework; sourceTree = "<group>"; };
 		D9D7EF5E1C143790006633D9 /* JLToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLToast.h; sourceTree = "<group>"; };
 		D9D7EF5F1C143790006633D9 /* JLToast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLToast.swift; sourceTree = "<group>"; };
 		D9D7EF601C143790006633D9 /* JLToastCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLToastCenter.swift; sourceTree = "<group>"; };
@@ -424,8 +415,6 @@
 				D9D7F0691C144191006633D9 /* MobileCoreServices.framework in Frameworks */,
 				D9D7F0671C144187006633D9 /* SystemConfiguration.framework in Frameworks */,
 				D9D7F05F1C1440E7006633D9 /* CFNetwork.framework in Frameworks */,
-				D9D7EF5C1C14374C006633D9 /* AVOSCloud.framework in Frameworks */,
-				D9D7F0601C14412B006633D9 /* AVOSCloud.framework in Frameworks */,
 				D9D7F0711C14422E006633D9 /* Crashlytics.framework in Frameworks */,
 				D9D7F0701C14422D006633D9 /* Fabric.framework in Frameworks */,
 			);
@@ -585,7 +574,6 @@
 		D9D7EC221C1433F0006633D9 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
-				D9D7EC231C1433F0006633D9 /* LoginController.swift */,
 				D9D7EC241C1433F0006633D9 /* MenuController.swift */,
 				D9D7EC251C1433F0006633D9 /* View */,
 				D9D7EC291C1433F0006633D9 /* ViewController.swift */,
@@ -607,7 +595,6 @@
 			isa = PBXGroup;
 			children = (
 				D9D7EC2B1C1433F0006633D9 /* AboutController.swift */,
-				D9D7EC2C1C1433F0006633D9 /* favoriteController.swift */,
 				D9D7EC2D1C1433F0006633D9 /* SettingController.swift */,
 			);
 			path = Setting;
@@ -678,7 +665,6 @@
 				D9D7EFA11C143896006633D9 /* NVActivityIndicatorView */,
 				D9D7EF651C14380C006633D9 /* Spring */,
 				D9D7EF5D1C143790006633D9 /* JLToast */,
-				D9D7EF5B1C14374C006633D9 /* AVOSCloud.framework */,
 				D9D7EF321C1435A8006633D9 /* Loggerithm */,
 				D9D7EDEB1C143495006633D9 /* SlideMenuController.swift */,
 				D9D7EDEC1C143495006633D9 /* SnapKit */,
@@ -1242,7 +1228,6 @@
 				D9D7EFA01C14380C006633D9 /* UnwindSegue.swift in Sources */,
 				D9D7EC541C1433F0006633D9 /* HadRead.swift in Sources */,
 				D9D7EC5F1C1433F0006633D9 /* PresentTransiton.swift in Sources */,
-				D9D7EC521C1433F0006633D9 /* favoriteController.swift in Sources */,
 				D9D7F0571C143E68006633D9 /* String+MD5.swift in Sources */,
 				D9D7F01D1C14390D006633D9 /* MJRefreshStateHeader.m in Sources */,
 				D9D7F05A1C143E68006633D9 /* UIImage+Extension.swift in Sources */,
@@ -1276,7 +1261,6 @@
 				D9D7F0141C14390D006633D9 /* MJRefreshHeader.m in Sources */,
 				D9D7EF851C14380C006633D9 /* AsyncImageView.swift in Sources */,
 				D9D7F0171C14390D006633D9 /* MJRefreshAutoStateFooter.m in Sources */,
-				D9D7EC4B1C1433F0006633D9 /* LoginController.swift in Sources */,
 				D9D7EF8A1C14380C006633D9 /* DesignableLabel.swift in Sources */,
 				D9D7EC511C1433F0006633D9 /* AboutController.swift in Sources */,
 			);
@@ -1431,26 +1415,13 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/WechatArticles/Library/AVOSCloud/iOS/release-v3.1.4/AVOSCloud/Static",
-					"$(PROJECT_DIR)/WechatArticles/Library/AVOSCloudCrashReportingDynamic/iOS/release-v3.1.4/AVOSCloudCrashReporting/Dynamic",
-					"$(PROJECT_DIR)/WechatArticles/Library/AVOSCloudDynamic/iOS/release-v3.1.4/AVOSCloud/Dynamic",
-					"$(PROJECT_DIR)/WechatArticles/Library/ShareSDK/Connection",
-					"$(PROJECT_DIR)/WechatArticles/Library/ShareSDK/Core",
-					"$(PROJECT_DIR)/WechatArticles/Library/ShareSDK/Extend/QQConnectSDK",
-					"$(PROJECT_DIR)/WechatArticles/Library/ShareSDK",
-					"$(PROJECT_DIR)/WechatArticles/Library/ShareSDK/UI",
 					"$(PROJECT_DIR)/WechatArticles/Library",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = WechatArticles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/WechatArticles/Library/AVOSCloud",
-					"$(PROJECT_DIR)/WechatArticles/Library/ShareSDK/Extend/SinaWeiboSDK",
-					"$(PROJECT_DIR)/WechatArticles/Library/ShareSDK/Extend/WeChatSDK",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-lc++",
 					"-ObjC",
@@ -1473,26 +1444,13 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/WechatArticles/Library/AVOSCloud/iOS/release-v3.1.4/AVOSCloud/Static",
-					"$(PROJECT_DIR)/WechatArticles/Library/AVOSCloudCrashReportingDynamic/iOS/release-v3.1.4/AVOSCloudCrashReporting/Dynamic",
-					"$(PROJECT_DIR)/WechatArticles/Library/AVOSCloudDynamic/iOS/release-v3.1.4/AVOSCloud/Dynamic",
-					"$(PROJECT_DIR)/WechatArticles/Library/ShareSDK/Connection",
-					"$(PROJECT_DIR)/WechatArticles/Library/ShareSDK/Core",
-					"$(PROJECT_DIR)/WechatArticles/Library/ShareSDK/Extend/QQConnectSDK",
-					"$(PROJECT_DIR)/WechatArticles/Library/ShareSDK",
-					"$(PROJECT_DIR)/WechatArticles/Library/ShareSDK/UI",
 					"$(PROJECT_DIR)/WechatArticles/Library",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = WechatArticles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/WechatArticles/Library/AVOSCloud",
-					"$(PROJECT_DIR)/WechatArticles/Library/ShareSDK/Extend/SinaWeiboSDK",
-					"$(PROJECT_DIR)/WechatArticles/Library/ShareSDK/Extend/WeChatSDK",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-lc++",
 					"-ObjC",

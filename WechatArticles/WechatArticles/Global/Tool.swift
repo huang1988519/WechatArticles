@@ -8,7 +8,7 @@
 
 import UIKit
 //import Kingfisher
-import AVOSCloud
+//import AVOSCloud
 //import Timepiece
 
 let FavoriteClassNameKey = "Favorite"
@@ -47,8 +47,11 @@ extension UIFont {
 
 //MARK: -  登录相关
 func GetUserInfo() -> AnyObject? {
+    return nil
+    /*
     let user = AVUser.currentUser()
     return user
+*/
 }
 
 //MARK: -  是否是当天第一次启动app

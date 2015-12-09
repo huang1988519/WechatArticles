@@ -129,7 +129,7 @@ class ShareViewController: UIViewController ,UICollectionViewDelegate,UICollecti
     }
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView ==  upCollectionView {
-            return 1
+            return 0
         }else{
             return 3
         }
