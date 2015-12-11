@@ -21,10 +21,18 @@ class ShareViewController: UIViewController ,UICollectionViewDelegate,UICollecti
     @IBOutlet weak var upCollectionView: UICollectionView!
     @IBOutlet weak var downCollectionView: UICollectionView!
     
-    var favoriteClickBlock :([String:AnyObject]? -> Void)?
+    var favoriteClickBlock :([String:AnyObject]? -> Void)? //收藏
+    var wechatClickBlock :([String:AnyObject]? -> Void)? //微信
+    var wechatTimelineClickBlock :([String:AnyObject]? -> Void)? //朋友圈
+    var weiboClickBlock :([String:AnyObject]? -> Void)?  //微博
     var copyClickBlock     :((String?) -> Void)?
     var openInSafariBlock  :((String?) -> Void)?
     var changeFontBlock    :((Double?) -> Void)?
+    
+    
+    lazy var wechat = MonkeyKing.Account.WeChat(appID: WechatShare.AppID, appKey: WechatShare.AppSecret)
+    lazy var weibo  = MonkeyKing.Account.Weibo(appID: WeiboShare.AppID, appKey: WeiboShare.AppSecret, redirectURL: WeiboShare.RedirectURL)
+    
     class func Nib() -> ShareViewController {
         let sb = MainSB().instantiateViewControllerWithIdentifier("ShareViewController")
         return (sb as? ShareViewController)!
@@ -110,7 +118,21 @@ class ShareViewController: UIViewController ,UICollectionViewDelegate,UICollecti
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = (collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as? ShareViewCell)!
         if collectionView == upCollectionView {
-            cell.titleLabel.text = "收藏"
+            switch indexPath.row {
+            case 0:
+                cell.imageView.image = UIImage(named: "weiboshareButton")
+                cell.titleLabel.text = "微信"
+            case 1:
+                cell.imageView.image = UIImage(named: "weiboshareButton")
+                cell.titleLabel.text = "朋友圈"
+            case 2:
+                cell.imageView.image = UIImage(named: "weiboshareButton")
+                cell.titleLabel.text = "微博"
+                
+            default:
+                log.warning("没有indexpath row 信息")
+            }
+            
         }else{
             if indexPath.row == 0 {
                 cell.titleLabel.text = "复制连接"
@@ -129,7 +151,7 @@ class ShareViewController: UIViewController ,UICollectionViewDelegate,UICollecti
     }
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView ==  upCollectionView {
-            return 0
+            return 3
         }else{
             return 3
         }
@@ -138,9 +160,23 @@ class ShareViewController: UIViewController ,UICollectionViewDelegate,UICollecti
         
         
         if collectionView ==  upCollectionView {
-            if let _fav = favoriteClickBlock {
-                dismiss(nil)
-                _fav(nil)
+            dismiss(nil)
+
+            switch indexPath.row {
+            case 0:
+                if let _frend = wechatClickBlock {
+                    _frend(nil)
+                }
+            case 1:
+                if let _circle = wechatTimelineClickBlock {
+                    _circle(nil)
+                }
+            case 2:
+                if let _weibo = weiboClickBlock  {
+                    _weibo(nil)
+                }
+            default:
+                log.warning("无对应indexpath")
             }
         }else{
             if indexPath.row == 0 {

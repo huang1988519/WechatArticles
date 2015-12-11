@@ -56,6 +56,9 @@ class ArticleController: UIViewController ,UIWebViewDelegate,UIScrollViewDelegat
         shareView.copyClickBlock = {[unowned self](url) -> Void in
             self.copyUrl()
         }
+        shareView.wechatClickBlock = {[unowned self](url) -> Void in
+            self.shareToWechat()
+        }
         /*
         shareView.favoriteClickBlock = {[unowned self](url) -> Void in
             self.favorite()
@@ -80,6 +83,9 @@ class ArticleController: UIViewController ,UIWebViewDelegate,UIScrollViewDelegat
             parseBoard.string = _url
             JLToast.makeText("复制成功").show()
         }
+    }
+    func shareToWechat() {
+        let message = MonkeyKing.Message
     }
     /*
     func favorite() {

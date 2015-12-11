@@ -23,7 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
-    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        if MonkeyKing.handleOpenURL(url) {
+            return true
+        }
+        return false
+    }
     //MARK: --
     func config(launchOption: [NSObject: AnyObject]?) {
         //配置log

@@ -26,7 +26,15 @@ func MainSB() -> UIStoryboard {
 }
 var hadReadList = [String]() //已读列表，内存保存，退出销毁
 
-
+struct WechatShare {
+    static let AppID = "wx9b886d4850d63c86"
+    static let AppSecret = "96d6d7e1cfcd6659f05b8c6bcef64d7f"
+}
+struct WeiboShare {
+    static let AppID = "175586578"
+    static let AppSecret = "cdc6d08b6443f6f64a832e40bb37d77d"
+    static let RedirectURL = "https://huang1988519.github.io"
+}
 // 全局提示框
 func alertWithMsg(msg: String) {
     let alert = UIAlertController(title: "提示", message: msg, preferredStyle: .Alert)
