@@ -7,13 +7,12 @@
 //
 
 import UIKit
-//import Spring
 //import Kingfisher
 
 @objc class HotCategoryController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate, UIViewControllerTransitioningDelegate,ArticleDelegate {
     let hotModel = HotViewModel()
 
-    @IBOutlet weak var coverImageView: AsyncImageView!
+    @IBOutlet weak var coverImageView: SpringImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     var resultArray :[[String:AnyObject]]?
     lazy var presentAnimation: PresentTransition = {
@@ -45,13 +44,32 @@ import UIKit
         requestNewestImageFromBing()
     }
     func requestNewestImageFromBing() {
+        let cacheManager = ImageCache(name: "index")
+        
         let address = "http://tu.ihuan.me/tu/api/bing/go/"
         let url     = NSURL(string: address)
-        var option :KingfisherOptionsInfo? = nil
         if isFirstStartUpFromToday() == true {
-            option = [.Options( .ForceRefresh)]
+            cacheManager.removeImageForKey("index")
         }else{
         }
+        let image = cacheManager.retrieveImageInDiskCacheForKey("index")
+        if let _ = image {
+            coverImageView.animation = "fadeIn"
+            coverImageView.animate()
+            coverImageView.image = image
+        }else {
+            ImageDownloader(name: "index").downloadImageWithURL(
+                url!,
+                progressBlock: nil)
+                {[unowned self] (image, error, imageURL, originalData) -> () in
+                    self.coverImageView.animation = "fadeIn"
+                    self.coverImageView.animate()
+                    self.coverImageView.image = image;
+                    
+                    cacheManager.storeImage(image!, forKey: "index")
+            }
+        }
+        
         coverImageView.kf_setImageWithURL(url!, placeholderImage: nil, optionsInfo: [.Options(.ForceRefresh)], completionHandler: {[unowned self] (image, error, cacheType, imageURL) -> () in
             self.coverImageView.startAnimating()
             self.coverImageView.image = image

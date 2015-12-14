@@ -43,6 +43,7 @@ extension UIViewController {
         let center = self.view.center
         
         let loading = NVActivityIndicatorView(frame: CGRectMake(0, 0, size.width, size.height), type: .BallClipRotatePulse, color: color, size: size)
+        loading.userInteractionEnabled = false
         loading.tag = loadingViewTag
         loading.center = center
         loading.startAnimation()

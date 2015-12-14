@@ -166,7 +166,9 @@ class ArticleListController: UIViewController,UITableViewDataSource,UITableViewD
         let avatarUrl = NSURL(string: (node["userLogo"] as? String)!)
         cell?.contentLabel.text = node["title"] as? String
         cell?.coverImageView.setUrl(imageUrl!)
-        cell?.avatar.setUrl(avatarUrl!)
+        if let _ =  avatarUrl {
+//            cell?.avatar.setUrl(avatarUrl!)
+        }
         cell?.ttitleLabel.text = node["userName"] as? String
         cell?.dateLabel.text = node["date"] as? String
         

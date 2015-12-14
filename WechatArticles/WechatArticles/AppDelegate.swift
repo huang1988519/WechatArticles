@@ -46,6 +46,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //注册通知
         let types : UIUserNotificationType = [.Alert,.Sound,.Badge]
         UIApplication.sharedApplication().registerUserNotificationSettings(UIUserNotificationSettings(forTypes: types, categories: nil))
+        //配置 腾讯 bugly
+        CrashReporter.sharedInstance().enableLog(true)
+        CrashReporter.sharedInstance().installWithAppId("900014291")
     }
     
 }

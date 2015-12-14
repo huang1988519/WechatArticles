@@ -29,6 +29,8 @@ var hadReadList = [String]() //已读列表，内存保存，退出销毁
 struct WechatShare {
     static let AppID = "wx9b886d4850d63c86"
     static let AppSecret = "96d6d7e1cfcd6659f05b8c6bcef64d7f"
+    static let sessionType  = "com.nixWork.China.WeChat.Session"
+    static let timeLineType = "com.nixWork.China.WeChat.Timeline"
 }
 struct WeiboShare {
     static let AppID = "175586578"
