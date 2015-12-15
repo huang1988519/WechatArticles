@@ -46,6 +46,7 @@ class ArticleListController: UIViewController,UITableViewDataSource,UITableViewD
             pageLabel.duration  = 1.5
             pageLabel.animate()
         }
+        
     }
     lazy var presentAnimation:TransitionZoom = {
         return TransitionZoom()
@@ -66,7 +67,7 @@ class ArticleListController: UIViewController,UITableViewDataSource,UITableViewD
         }else{
             titleLabel.text = "你愁啥"
         }
-
+        
         
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
