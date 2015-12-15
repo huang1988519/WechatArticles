@@ -48,9 +48,12 @@ class SettingController: UITableViewController, CLLocationManagerDelegate,UIView
     let locationManager :CLLocationManager = CLLocationManager()
     let ak = "3cSn0P7TOrl9veCRBDXwq7UF" //百度地图 ak
     let session = NSURLSession.sharedSession() //请求天气
-    var cacheSize : UInt = 0{
+    var cacheSize : CGFloat = 0{
         didSet {
-            self.cacheCell.detailTextLabel?.text = "\(cacheSize/1024/1024) M"
+            let m   = cacheSize/1024.0/1024.0
+            let string = String(format: "%0.3f M", m)
+            self.cacheCell.detailTextLabel?.text = string
+            print("列表缓存 \((cacheSize/1024.0/1024.0)) M")
         }
     }
     var timer :NSTimer!
@@ -88,11 +91,10 @@ class SettingController: UITableViewController, CLLocationManagerDelegate,UIView
         ImageCache.defaultCache.calculateDiskCacheSizeWithCompletionHandler { [unowned self](size) -> () in
             log.debug("图片缓存 %d M", args: size/1024/1024)
             self.cacheCell.detailTextLabel?.text = "\(size/1024/1024) M"
-            self.cacheSize = self.cacheSize + size
+            self.cacheSize = self.cacheSize + CGFloat(size)
         }
         cacheManager.calculateDiskCacheSizeWithCompletionHandler {[unowned self] (size) -> () in
-            log.debug("列表缓存 %d M", args: size/1024/1024)
-            self.cacheSize = self.cacheSize + size
+            self.cacheSize = self.cacheSize + CGFloat(size)
         }
     }
     override func viewWillAppear(animated: Bool) {
@@ -204,7 +206,7 @@ class SettingController: UITableViewController, CLLocationManagerDelegate,UIView
         }
         
         cityLabel.text = currentCity
-        pmLabel.text   = "\(pm25!) -- PM25"
+        pmLabel.text   = "\(pm25!) -- PM2.5"
         if let tianqi = weather!["weather"] as? String! {
             weatherLabel.text = tianqi
         }

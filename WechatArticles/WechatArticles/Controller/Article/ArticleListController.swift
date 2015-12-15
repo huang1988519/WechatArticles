@@ -20,7 +20,7 @@ enum InputDictionayKeys:String {
 struct Result {
     var pageCount   = 0
     var totalNumber = 0
-    var list:[[String:AnyObject]]?
+    var list:[[String:AnyObject]] = [[String:AnyObject]]()
 }
 class ArticleListController: UIViewController,UITableViewDataSource,UITableViewDelegate ,UIViewControllerTransitioningDelegate{
     //MARK: - 实例
@@ -147,17 +147,15 @@ class ArticleListController: UIViewController,UITableViewDataSource,UITableViewD
             resultModel.pageCount   = (pages as? Int)!
             resultModel.totalNumber = (numbers as? Int)!
             
-            var arr = [[String:AnyObject]]()
-            if resultModel.list?.isEmpty == false && isLoadingMore == true{
-                arr +=  resultModel.list!
+            if  isLoadingMore == false{
+                resultModel.list.removeAll()
             }
-            if let list = lists as? [[String :AnyObject]] {
-                arr += list
+            guard let list = lists as? [[String :AnyObject]] else {
+                return;
             }
-            resultModel.list        = arr
-            
+            resultModel.list += list
+
             tableView.reloadData()
-            dismissButton.alpha = 1
         }
     }
     //MARK: -- 缓存相关
@@ -179,8 +177,8 @@ class ArticleListController: UIViewController,UITableViewDataSource,UITableViewD
         }
         do {
             let list = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
-            resultModel.list = list as? [[String:AnyObject]]
-            if resultModel.list?.isEmpty == false {
+            resultModel.list = (list as? [[String:AnyObject]])!
+            if resultModel.list.isEmpty == false {
                 log.debug("读取cache ，并刷新")
                 tableView.reloadData()
             }
@@ -190,7 +188,7 @@ class ArticleListController: UIViewController,UITableViewDataSource,UITableViewD
     }
     func storeCache() {
         do {
-            let storeData = try NSJSONSerialization.dataWithJSONObject(resultModel.list!, options: .PrettyPrinted)
+            let storeData = try NSJSONSerialization.dataWithJSONObject(resultModel.list, options: .PrettyPrinted)
             let storeDic = NSMutableDictionary()
             storeDic["data"] = storeData
             storeDic["page"] = currentPage
@@ -218,7 +216,7 @@ class ArticleListController: UIViewController,UITableViewDataSource,UITableViewD
     }
     //MARK: --
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let node = resultModel.list![indexPath.row]
+        let node = resultModel.list[indexPath.row]
         
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? ArticleListCell
         let imageUrl  = NSURL(string: (node["contentImg"] as? String)!)
@@ -241,13 +239,13 @@ class ArticleListController: UIViewController,UITableViewDataSource,UITableViewD
         return cell!
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if resultModel.list == nil || resultModel.list?.isEmpty == true {
+        if resultModel.list.isEmpty == true {
             return 0
         }
-        return (resultModel.list?.count)!
+        return (resultModel.list.count)
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {        
-        let node = resultModel.list![indexPath.row]
+        let node = resultModel.list[indexPath.row]
         lastIndexPath = indexPath
         
         let detailVC = ArticleController.Nib()
