@@ -72,30 +72,27 @@ public class Request: NSObject {
         request.timeoutInterval = 10
         #endif
 
-        task = session.dataTaskWithRequest(request) { [weak self](data, response, error) -> Void in
-            
-            let strongSelf = self
-            
+        task = session.dataTaskWithRequest(request) { [unowned self](data, response, error) -> Void in
             if let _err = error {
                 log.error(_err)
 //                strongSelf?.state = Variable(.Failed)
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self!._faildBlock!(msg: "网络失败\n\(_err.description)")
+                    self._faildBlock!(msg: "网络失败\n\(_err.description)")
                     })
                 return
             }else{
-                let (result,errorMsg) = (strongSelf?.dealWithResult(data!))!
+                let (result,errorMsg) = self.dealWithResult(data!)
                 
                 if errorMsg != nil {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self?._faildBlock!(msg: errorMsg)
+                        self._faildBlock!(msg: errorMsg)
                     })
                 }else{
-                    self!.resultObject = result
+                    self.resultObject = result
                     
-                    strongSelf?.handleResult()
+                    self.handleResult()
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self?._successBlock!(data: self?.resultObject)
+                        self._successBlock!(data: self.resultObject)
                     })
                 }
             }

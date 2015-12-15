@@ -48,12 +48,19 @@ class SettingController: UITableViewController, CLLocationManagerDelegate,UIView
     let locationManager :CLLocationManager = CLLocationManager()
     let ak = "3cSn0P7TOrl9veCRBDXwq7UF" //百度地图 ak
     let session = NSURLSession.sharedSession() //请求天气
-    
+    var cacheSize : UInt = 0{
+        didSet {
+            self.cacheCell.detailTextLabel?.text = "\(cacheSize/1024/1024) M"
+        }
+    }
     var timer :NSTimer!
     var isLogin = false
     lazy var presentAnimation: PresentTransition = {
         return PresentTransition()
     }()
+    let cacheManager = try! Cache<NSMutableDictionary>(name: "ListCache")
+
+    
     class func Nib() -> SettingController {
         let sb = MainSB()
         return (sb.instantiateViewControllerWithIdentifier("SettingController") as? SettingController)!
@@ -81,6 +88,11 @@ class SettingController: UITableViewController, CLLocationManagerDelegate,UIView
         ImageCache.defaultCache.calculateDiskCacheSizeWithCompletionHandler { [unowned self](size) -> () in
             log.debug("图片缓存 %d M", args: size/1024/1024)
             self.cacheCell.detailTextLabel?.text = "\(size/1024/1024) M"
+            self.cacheSize = self.cacheSize + size
+        }
+        cacheManager.calculateDiskCacheSizeWithCompletionHandler {[unowned self] (size) -> () in
+            log.debug("列表缓存 %d M", args: size/1024/1024)
+            self.cacheSize = self.cacheSize + size
         }
     }
     override func viewWillAppear(animated: Bool) {
@@ -229,6 +241,7 @@ class SettingController: UITableViewController, CLLocationManagerDelegate,UIView
                 JLToast.makeText("缓存清理完成").show()
                 strongself.cacheCell.detailTextLabel?.text = "0 M"
             })
+            self.cacheManager.removeAllObjects()
         }
         alert.addAction(cancel)
         alert.addAction(delete)

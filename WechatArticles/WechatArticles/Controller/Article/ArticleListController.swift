@@ -51,7 +51,9 @@ class ArticleListController: UIViewController,UITableViewDataSource,UITableViewD
         return TransitionZoom()
     }()
     
-
+    
+    let cacheManager = try! Cache<NSMutableDictionary>(name: "ListCache")
+    
     //MARK: - 方法
     class func Nib() -> ArticleListController {
         let vc = MainSB().instantiateViewControllerWithIdentifier("ArticleListController")
@@ -78,9 +80,19 @@ class ArticleListController: UIViewController,UITableViewDataSource,UITableViewD
         
         if let _id = inputDic![InputDictionayKeys.ID.rawValue] as? String {
             request.typeId = Int(_id)!
+            
+            let storeDic = cacheManager.objectForKey(_id)
+            if storeDic != nil{
+                readCache(storeDic!)
+            }else {
+                tableView.header.beginRefreshing()
+            }
         }
         
-        tableView.header.beginRefreshing()
+    }
+    deinit {
+        log.debug("[释放]ArticleListController  ，并缓存列表")
+        storeCache()
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -95,7 +107,7 @@ class ArticleListController: UIViewController,UITableViewDataSource,UITableViewD
     }
     func loadMore() {
         isLoadingMore = true
-        currentPage = ++request.page
+        currentPage = ++currentPage
         requestList(currentPage)
     }
     func requestList(page:Int) {
@@ -146,6 +158,52 @@ class ArticleListController: UIViewController,UITableViewDataSource,UITableViewD
             tableView.reloadData()
             dismissButton.alpha = 1
         }
+    }
+    //MARK: -- 缓存相关
+    func readCache(storeDic:NSDictionary?) {
+        guard let _ = storeDic else {
+            log.debug("本地不存在缓存，刷新")
+            return
+        }
+        if let _page = storeDic!["page"] as? Int {
+            currentPage = _page
+        }
+        if let _offset = storeDic!["offset"] as? CGFloat {
+            dispatch_async_safely_main_queue({ () -> () in
+                self.tableView.contentOffset = CGPointMake(0, _offset)
+            })
+        }
+        guard let data = storeDic!["data"] as? NSData else {
+            return
+        }
+        do {
+            let list = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+            resultModel.list = list as? [[String:AnyObject]]
+            if resultModel.list?.isEmpty == false {
+                log.debug("读取cache ，并刷新")
+                tableView.reloadData()
+            }
+        }catch {
+            log.debug(error)
+        }
+    }
+    func storeCache() {
+        do {
+            let storeData = try NSJSONSerialization.dataWithJSONObject(resultModel.list!, options: .PrettyPrinted)
+            let storeDic = NSMutableDictionary()
+            storeDic["data"] = storeData
+            storeDic["page"] = currentPage
+            storeDic["offset"] = tableView.contentOffset.y
+            
+            if let _id = inputDic![InputDictionayKeys.ID.rawValue] as? String {
+                cacheManager.setObject(storeDic, forKey: _id) { () -> () in
+                    log.debug("缓存完成")
+                }
+            }
+        }catch {
+            log.debug(error)
+        }
+
     }
     //MARK: --
     @IBAction func goBack(sender: UIButton) {
