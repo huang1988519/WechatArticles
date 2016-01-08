@@ -1295,7 +1295,7 @@
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                         <state key="normal" title="---"/>
                                         <connections>
-                                            <action selector="shareSystem" destination="4mD-ZC-6gZ" eventType="touchUpInside" id="oGL-pr-7xG"/>
+                                            <action selector="more" destination="4mD-ZC-6gZ" eventType="touchUpInside" id="YWq-Rn-GrO"/>
                                         </connections>
                                     </button>
                                 </subviews>

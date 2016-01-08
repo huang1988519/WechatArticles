@@ -47,7 +47,43 @@ class ArticleController: UIViewController ,UIWebViewDelegate,UIScrollViewDelegat
     @IBAction func dismiss(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-    @IBAction func shareSystem() {
+    @IBAction func more() {
+        let alert = UIAlertController(title: "请选择操作内容", message: nil, preferredStyle: .ActionSheet)
+        let reportAction = UIAlertAction(title: "举报", style: .Destructive) { [unowned self](action) -> Void in
+            self.report()
+        }
+        let shareAction = UIAlertAction(title: "分享", style: .Default) { [unowned self](action) -> Void in
+            self.shareSystem()
+        }
+        let cancel = UIAlertAction(title: "取消", style: .Cancel) { (action) -> Void in
+            
+        }
+        alert.addAction(reportAction)
+        alert.addAction(shareAction)
+        alert.addAction(cancel)
+        presentViewController(alert, animated: true ,completion:nil)
+    }
+    func report() {
+        guard let id = inputDic!["id"] as? String else {
+            alertWithMsg("取不到需要举报文章ID")
+            return
+        }
+
+        let request = SimpleNetworking.sharedInstance
+        request.request(NSURL(string: "http://104.224.139.177/ayb/wechatArticle.php?")!, method: .GET, parameters: ["report":id]) { (data, response, error) -> Void in
+            log.debug(data)
+            guard let message = data!["message"] as? String  else {
+                dispatch_async_safely_main_queue({ () -> () in
+                    alertWithMsg("举报异常")
+                })
+                return
+            }
+            dispatch_async_safely_main_queue({ () -> () in
+                JLToast.makeText(message).show()
+            })
+        }
+    }
+     func shareSystem() {
         MonkeyKing.registerAccount(.WeChat(appID: WechatShare.AppID, appKey: WechatShare.AppSecret))
         let urlString     = inputDic!["url"] as! String
         let title         = "爱上『Hi阅读』"
