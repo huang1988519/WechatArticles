@@ -27,7 +27,23 @@ import UIKit
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
+        refresh()
+        requestNewestImageFromBing()
+        
+    }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.becomeFirstResponder()
+    }
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    //MARK: -  网络
+    func refresh() {
         self.showHUD(UIColor.whiteColor())
+
         hotModel.requestList(
             {[unowned self] () -> () in
                 self.hideHUD()
@@ -40,8 +56,10 @@ import UIKit
                     self.resultArray = list
                     self.collectionView.reloadData()
                 }
+                if error != nil {
+                    JLToast.makeText("摇一摇 刷新首页").show()
+                }
         }
-        requestNewestImageFromBing()
     }
     func requestNewestImageFromBing() {
         let cacheManager = ImageCache(name: "index")
@@ -143,4 +161,12 @@ import UIKit
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
+}
+extension HotCategoryController {
+    override func motionBegan(motion: UIEventSubtype, withEvent event: UIEvent?) {
+        if motion == .MotionShake {
+            JLToast.makeText("刷新首页").show()
+            refresh()
+        }
+    }
 }

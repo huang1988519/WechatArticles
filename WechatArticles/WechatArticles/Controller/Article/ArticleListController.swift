@@ -226,6 +226,7 @@ class ArticleListController: UIViewController,UITableViewDataSource,UITableViewD
         if let _ =  avatarUrl {
 //            cell?.avatar.setUrl(avatarUrl!)
         }
+        
         cell?.ttitleLabel.text = node["userName"] as? String
         cell?.dateLabel.text = node["date"] as? String
         
@@ -234,8 +235,12 @@ class ArticleListController: UIViewController,UITableViewDataSource,UITableViewD
         }else{
             cell?.contentLabel.textColor = UIColor(white: 0.2, alpha: 1)
         }
+        if let id = node["id"] {
+            cell?.reported = ReportManager.ContainID("\(id)")
+        }
         cell?.setNeedsUpdateConstraints()
         cell?.updateConstraintsIfNeeded()
+        
         return cell!
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -244,7 +249,12 @@ class ArticleListController: UIViewController,UITableViewDataSource,UITableViewD
         }
         return (resultModel.list.count)
     }
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {        
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as? ArticleListCell
+        if cell?.reported ==  true {
+            JLToast.makeText("内容被举报，暂时无法查看").show()
+            return
+        }
         let node = resultModel.list[indexPath.row]
         lastIndexPath = indexPath
         

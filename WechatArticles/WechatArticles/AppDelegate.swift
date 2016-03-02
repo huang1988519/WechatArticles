@@ -48,6 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //配置 腾讯 bugly
         CrashReporter.sharedInstance().enableLog(true)
         CrashReporter.sharedInstance().installWithAppId("900014291")
+        ReportManager.Synchronous()
     }
     
 }

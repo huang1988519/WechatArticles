@@ -68,20 +68,32 @@ class ArticleController: UIViewController ,UIWebViewDelegate,UIScrollViewDelegat
             alertWithMsg("取不到需要举报文章ID")
             return
         }
-
-        let request = SimpleNetworking.sharedInstance
-        request.request(NSURL(string: "http://104.224.139.177/ayb/wechatArticle.php?")!, method: .GET, parameters: ["report":id]) { (data, response, error) -> Void in
-            log.debug(data)
-            guard let message = data!["message"] as? String  else {
+        
+        ReportManager.ReportArticleId("\(id)") { (sucess) -> Void in
+            if sucess == true {
+                dispatch_async_safely_main_queue({ () -> () in
+                    JLToast.makeText("举报成功").show()
+                })
+            }else {
                 dispatch_async_safely_main_queue({ () -> () in
                     alertWithMsg("举报异常")
                 })
-                return
             }
-            dispatch_async_safely_main_queue({ () -> () in
-                JLToast.makeText(message).show()
-            })
         }
+
+//        let request = SimpleNetworking.sharedInstance
+//        request.request(NSURL(string: "http://104.224.139.177/ayb/wechatArticle.php?")!, method: .GET, parameters: ["report":id]) { (data, response, error) -> Void in
+//            log.debug(data)
+//            guard let message = data!["message"] as? String  else {
+//                dispatch_async_safely_main_queue({ () -> () in
+//                    alertWithMsg("举报异常")
+//                })
+//                return
+//            }
+//            dispatch_async_safely_main_queue({ () -> () in
+//                JLToast.makeText(message).show()
+//            })
+//        }
     }
      func shareSystem() {
         MonkeyKing.registerAccount(.WeChat(appID: WechatShare.AppID, appKey: WechatShare.AppSecret))

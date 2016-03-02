@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D90002FF1C86D55600DCE04C /* ReportManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90002FE1C86D55600DCE04C /* ReportManager.swift */; };
+		D90003021C86E0D300DCE04C /* cert.pem in Resources */ = {isa = PBXBuildFile; fileRef = D90003001C86E0D300DCE04C /* cert.pem */; };
+		D90003031C86E0D300DCE04C /* key.pem in Resources */ = {isa = PBXBuildFile; fileRef = D90003011C86E0D300DCE04C /* key.pem */; };
 		D90A70471C199A88006B4D34 /* AnyActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90A70421C199A88006B4D34 /* AnyActivity.swift */; };
 		D90A70491C199A88006B4D34 /* MonkeyKing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90A70451C199A88006B4D34 /* MonkeyKing.swift */; };
 		D90A704A1C199A88006B4D34 /* SimpleNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90A70461C199A88006B4D34 /* SimpleNetworking.swift */; };
@@ -210,6 +213,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D90002FE1C86D55600DCE04C /* ReportManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportManager.swift; sourceTree = "<group>"; };
+		D90003001C86E0D300DCE04C /* cert.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cert.pem; sourceTree = "<group>"; };
+		D90003011C86E0D300DCE04C /* key.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = key.pem; sourceTree = "<group>"; };
 		D90A70421C199A88006B4D34 /* AnyActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyActivity.swift; sourceTree = "<group>"; };
 		D90A70441C199A88006B4D34 /* MonkeyKing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonkeyKing.h; sourceTree = "<group>"; };
 		D90A70451C199A88006B4D34 /* MonkeyKing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonkeyKing.swift; sourceTree = "<group>"; };
@@ -471,6 +477,8 @@
 			isa = PBXGroup;
 			children = (
 				D9D7F0721C145022006633D9 /* libsqlite3.0.tbd */,
+				D90003001C86E0D300DCE04C /* cert.pem */,
+				D90003011C86E0D300DCE04C /* key.pem */,
 				D9C6C6171C1E96B2007E6D6F /* Bugly.framework */,
 				D9D7EBE01C143308006633D9 /* WechatArticles */,
 				D9D7EBF51C143308006633D9 /* WechatArticlesTests */,
@@ -656,6 +664,7 @@
 			isa = PBXGroup;
 			children = (
 				D9D7EC381C1433F0006633D9 /* Tool.swift */,
+				D90002FE1C86D55600DCE04C /* ReportManager.swift */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -1085,8 +1094,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D90003031C86E0D300DCE04C /* key.pem in Resources */,
 				D9D7EC421C1433F0006633D9 /* Main.storyboard in Resources */,
 				D9D7EC411C1433F0006633D9 /* LaunchScreen.storyboard in Resources */,
+				D90003021C86E0D300DCE04C /* cert.pem in Resources */,
 				D9D7EBE91C143308006633D9 /* Assets.xcassets in Resources */,
 				D9D7EF931C14380C006633D9 /* LoadingView.xib in Resources */,
 				D9D7EBE71C143308006633D9 /* Main.storyboard in Resources */,
@@ -1219,6 +1230,7 @@
 				D9D7F0551C143E68006633D9 /* KingfisherOptionsInfo.swift in Sources */,
 				D9D7EC571C1433F0006633D9 /* Cus+UIColor.swift in Sources */,
 				D9D7F03A1C143AB3006633D9 /* NSCalendarUnit+Timepiece.swift in Sources */,
+				D90002FF1C86D55600DCE04C /* ReportManager.swift in Sources */,
 				D9D7EEE51C143495006633D9 /* ConstraintMaker.swift in Sources */,
 				D9D7F01B1C14390D006633D9 /* MJRefreshGifHeader.m in Sources */,
 				D9D7EFDF1C143896006633D9 /* NVActivityIndicatorAnimationTriangleSkewSpin.swift in Sources */,
@@ -1475,8 +1487,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jiabin Li (GW7ZRB8ABG)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jiabin Li (GW7ZRB8ABG)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

@@ -17,6 +17,16 @@ class ArticleListCell: UITableViewCell {
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var coverImageView: AsyncImageView!
     
+    var reported:Bool = false {//是否被举报，默认是no
+        didSet {
+            if reported == true {
+                self.contentLabel.text = "内容被举报，暂无法查看"
+                self.contentLabel.textColor = UIColor.orangeColor()
+                coverImageView.setUrlString("www.baidu.com")
+            }
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
