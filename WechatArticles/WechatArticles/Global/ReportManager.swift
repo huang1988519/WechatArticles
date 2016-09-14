@@ -44,7 +44,7 @@ extension ReportManager {
         guard let url = _url  else {
             return
         }
-        NSURLRequest.allowsWeakReference()
+//        NSURLRequest.allowsWeakReference()
         let task = session.dataTaskWithRequest(NSURLRequest(URL: url)) {[weak self] (data, res, err) -> Void in
             if err != nil {
                 log.error("获取不到举报列表\(err)")

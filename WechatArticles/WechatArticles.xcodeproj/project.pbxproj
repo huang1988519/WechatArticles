@@ -19,8 +19,6 @@
 		D9D7EBE21C143308006633D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7EBE11C143308006633D9 /* AppDelegate.swift */; };
 		D9D7EBE71C143308006633D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9D7EBE51C143308006633D9 /* Main.storyboard */; };
 		D9D7EBE91C143308006633D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9D7EBE81C143308006633D9 /* Assets.xcassets */; };
-		D9D7EBF71C143308006633D9 /* WechatArticlesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7EBF61C143308006633D9 /* WechatArticlesTests.swift */; };
-		D9D7EC021C143308006633D9 /* WechatArticlesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7EC011C143308006633D9 /* WechatArticlesUITests.swift */; };
 		D9D7EC411C1433F0006633D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9D7EC101C1433F0006633D9 /* LaunchScreen.storyboard */; };
 		D9D7EC421C1433F0006633D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9D7EC121C1433F0006633D9 /* Main.storyboard */; };
 		D9D7EC431C1433F0006633D9 /* ArticleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7EC161C1433F0006633D9 /* ArticleController.swift */; };
@@ -229,11 +227,7 @@
 		D9D7EBE81C143308006633D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9D7EBED1C143308006633D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9D7EBF21C143308006633D9 /* WechatArticlesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WechatArticlesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D9D7EBF61C143308006633D9 /* WechatArticlesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WechatArticlesTests.swift; sourceTree = "<group>"; };
-		D9D7EBF81C143308006633D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9D7EBFD1C143308006633D9 /* WechatArticlesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WechatArticlesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D9D7EC011C143308006633D9 /* WechatArticlesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WechatArticlesUITests.swift; sourceTree = "<group>"; };
-		D9D7EC031C143308006633D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9D7EC111C1433F0006633D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D9D7EC131C1433F0006633D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
 		D9D7EC161C1433F0006633D9 /* ArticleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleController.swift; sourceTree = "<group>"; };
@@ -481,8 +475,6 @@
 				D90003011C86E0D300DCE04C /* key.pem */,
 				D9C6C6171C1E96B2007E6D6F /* Bugly.framework */,
 				D9D7EBE01C143308006633D9 /* WechatArticles */,
-				D9D7EBF51C143308006633D9 /* WechatArticlesTests */,
-				D9D7EC001C143308006633D9 /* WechatArticlesUITests */,
 				D9D7EBDF1C143308006633D9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -524,24 +516,6 @@
 				D9D7F05C1C1440CE006633D9 /* libsqlite3.tbd */,
 			);
 			path = WechatArticles;
-			sourceTree = "<group>";
-		};
-		D9D7EBF51C143308006633D9 /* WechatArticlesTests */ = {
-			isa = PBXGroup;
-			children = (
-				D9D7EBF61C143308006633D9 /* WechatArticlesTests.swift */,
-				D9D7EBF81C143308006633D9 /* Info.plist */,
-			);
-			path = WechatArticlesTests;
-			sourceTree = "<group>";
-		};
-		D9D7EC001C143308006633D9 /* WechatArticlesUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D9D7EC011C143308006633D9 /* WechatArticlesUITests.swift */,
-				D9D7EC031C143308006633D9 /* Info.plist */,
-			);
-			path = WechatArticlesUITests;
 			sourceTree = "<group>";
 		};
 		D9D7EC0F1C1433F0006633D9 /* Base.lproj */ = {
@@ -1316,7 +1290,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9D7EBF71C143308006633D9 /* WechatArticlesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1324,7 +1297,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9D7EC021C143308006633D9 /* WechatArticlesUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
