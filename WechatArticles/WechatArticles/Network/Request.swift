@@ -93,6 +93,7 @@ public class Request: NSObject {
                     self.handleResult()
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self._successBlock!(data: self.resultObject)
+                        print("--------->\(url)<---------------\n res: \n\(result)")
                     })
                 }
             }

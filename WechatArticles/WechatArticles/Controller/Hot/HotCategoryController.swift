@@ -42,7 +42,7 @@ import UIKit
     
     //MARK: -  网络
     func refresh() {
-        self.showHUD(UIColor.whiteColor())
+        self.showHUD()
 
         hotModel.requestList(
             {[unowned self] () -> () in
@@ -82,7 +82,10 @@ import UIKit
                 {[unowned self] (image, error, imageURL, originalData) -> () in
                     self.coverImageView.animation = "fadeIn"
                     self.coverImageView.animate()
-                    self.coverImageView.image = image;
+                    
+                    UIView.animateWithDuration(0.5, animations: {
+                        self.coverImageView.image = image;
+                    })
                     
                     cacheManager.storeImage(image!, forKey: "index")
             }
@@ -144,8 +147,11 @@ import UIKit
         articleVC.transitioningDelegate = self
         articleVC.inputDic  = node
         
+        navigationController?.pushViewController(articleVC, animated: true);
+        /*
         self.parentViewController!.presentViewController(articleVC, animated: true) { () -> Void in
         }
+ */
 
     }
     

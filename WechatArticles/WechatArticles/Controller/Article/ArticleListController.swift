@@ -98,7 +98,7 @@ class ArticleListController: UIViewController,UITableViewDataSource,UITableViewD
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if hadReadList.isEmpty == false && lastIndexPath != nil {
-            tableView.reloadRowsAtIndexPaths([lastIndexPath!], withRowAnimation: .Fade)
+            tableView.reloadRowsAtIndexPaths([lastIndexPath!], withRowAnimation: .Automatic)
         }
     }
     func startReqeust() {
@@ -108,7 +108,7 @@ class ArticleListController: UIViewController,UITableViewDataSource,UITableViewD
     }
     func loadMore() {
         isLoadingMore = true
-        currentPage = ++currentPage
+        currentPage = currentPage + 1
         requestList(currentPage)
     }
     func requestList(page:Int) {
@@ -206,8 +206,11 @@ class ArticleListController: UIViewController,UITableViewDataSource,UITableViewD
     }
     //MARK: --
     @IBAction func goBack(sender: UIButton) {
+        navigationController?.popViewControllerAnimated(true)
+
         if let _delgate = articleDelegate {
             _delgate.dismissArticle()
+        }else {
         }
     }
     func isRead(articleId:String) -> Bool {
@@ -231,9 +234,9 @@ class ArticleListController: UIViewController,UITableViewDataSource,UITableViewD
         cell?.dateLabel.text = node["date"] as? String
         
         if isRead((node["id"] as? String)!) {
-            cell?.contentLabel.textColor = UIColor(white: 0.5, alpha: 1)
+            cell?.contentLabel.textColor = UIColor(white: 0.8, alpha: 1)
         }else{
-            cell?.contentLabel.textColor = UIColor(white: 0.2, alpha: 1)
+            cell?.contentLabel.textColor = UIColor(white: 1, alpha: 1)
         }
         if let id = node["id"] {
             cell?.reported = ReportManager.ContainID("\(id)")
@@ -261,8 +264,16 @@ class ArticleListController: UIViewController,UITableViewDataSource,UITableViewD
         let detailVC = ArticleController.Nib()
         detailVC.inputDic = node
         detailVC.transitioningDelegate = self
-        self.presentViewController(detailVC, animated: true, completion: nil)
+        
+        navigationController?.pushViewController(detailVC, animated: true)
+//        self.presentViewController(detailVC, animated: true, completion: nil)
     }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let size = UIScreen.mainScreen().bounds.size
+        return 180 * (size.width / 320 );
+    }
+    
     //MARK: -- Animatin Transition
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return presentAnimation.animationControllerForPresentedController(presented, presentingController: presenting, sourceController: source)

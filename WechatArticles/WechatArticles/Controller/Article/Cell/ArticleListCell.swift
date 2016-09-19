@@ -23,6 +23,7 @@ class ArticleListCell: UITableViewCell {
                 self.contentLabel.text = "内容被举报，暂无法查看"
                 self.contentLabel.textColor = UIColor.orangeColor()
                 coverImageView.setUrlString("www.baidu.com")
+//                coverImageView.setURL(NSURL(string: "www.baidu.com"), placeholderImage: nil)
             }
         }
     }

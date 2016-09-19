@@ -45,7 +45,8 @@ class ArticleController: UIViewController ,UIWebViewDelegate,UIScrollViewDelegat
         fetchShareImage()
     }
     @IBAction func dismiss(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        navigationController?.popViewControllerAnimated(true)
+//        self.dismissViewControllerAnimated(true, completion: nil)
     }
     @IBAction func more() {
         let alert = UIAlertController(title: "请选择操作内容", message: nil, preferredStyle: .ActionSheet)
