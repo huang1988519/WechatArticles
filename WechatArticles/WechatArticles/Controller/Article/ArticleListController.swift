@@ -25,7 +25,6 @@ struct Result {
 class ArticleListController: UIViewController,UITableViewDataSource,UITableViewDelegate ,UIViewControllerTransitioningDelegate{
     //MARK: - 实例
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dismissButton: SpringButton!
     @IBOutlet weak var pageLabel: SpringLabel!
     
@@ -40,11 +39,13 @@ class ArticleListController: UIViewController,UITableViewDataSource,UITableViewD
     var lastIndexPath : NSIndexPath?
     var currentPage = 1 {
         didSet {
+            /*
             pageLabel.text = "\(currentPage)"
             pageLabel.animation = "slideUp"
             pageLabel.damping   = 0.9
             pageLabel.duration  = 1.5
             pageLabel.animate()
+ */
         }
         
     }
@@ -62,10 +63,15 @@ class ArticleListController: UIViewController,UITableViewDataSource,UITableViewD
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        /*
         if let title = inputDic!["name"] as? String {
             titleLabel.text = title
         }else{
             titleLabel.text = "你愁啥"
+        }
+ */
+        if let title = inputDic!["name"] as? String {
+            navigationItem.title = title
         }
         
         
@@ -91,15 +97,28 @@ class ArticleListController: UIViewController,UITableViewDataSource,UITableViewD
         }
         
     }
+    
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    
     deinit {
         log.debug("[释放]ArticleListController  ，并缓存列表")
         storeCache()
     }
+    
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        /*
         if hadReadList.isEmpty == false && lastIndexPath != nil {
             tableView.reloadRowsAtIndexPaths([lastIndexPath!], withRowAnimation: .Automatic)
         }
+ */
     }
     func startReqeust() {
         isLoadingMore = false
@@ -222,25 +241,15 @@ class ArticleListController: UIViewController,UITableViewDataSource,UITableViewD
         let node = resultModel.list[indexPath.row]
         
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as? ArticleListCell
-        let imageUrl  = NSURL(string: (node["contentImg"] as? String)!)
-        let avatarUrl = NSURL(string: (node["userLogo"] as? String)!)
-        cell?.contentLabel.text = node["title"] as? String
-        cell?.coverImageView.setUrl(imageUrl!)
-        if let _ =  avatarUrl {
-//            cell?.avatar.setUrl(avatarUrl!)
-        }
         
-        cell?.ttitleLabel.text = node["userName"] as? String
-        cell?.dateLabel.text = node["date"] as? String
+        cell?.setItem(node)
         
         if isRead((node["id"] as? String)!) {
-            cell?.contentLabel.textColor = UIColor(white: 0.8, alpha: 1)
+            cell?.contentLabel.textColor = UIColor(white: 0.2, alpha: 1)
         }else{
-            cell?.contentLabel.textColor = UIColor(white: 1, alpha: 1)
+            cell?.contentLabel.textColor = UIColor(white: 0, alpha: 1)
         }
-        if let id = node["id"] {
-            cell?.reported = ReportManager.ContainID("\(id)")
-        }
+
         cell?.setNeedsUpdateConstraints()
         cell?.updateConstraintsIfNeeded()
         
@@ -267,20 +276,28 @@ class ArticleListController: UIViewController,UITableViewDataSource,UITableViewD
         
         navigationController?.pushViewController(detailVC, animated: true)
 //        self.presentViewController(detailVC, animated: true, completion: nil)
+        // 设置已读状态
+        if let id = node["id"] as? String{
+            hadReadList.append(id)
+            
+            dispatch_async_safely_main_queue({ 
+                tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+            })
+        }
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let size = UIScreen.mainScreen().bounds.size
-        return 180 * (size.width / 320 );
-    }
     
     //MARK: -- Animatin Transition
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return presentAnimation.animationControllerForPresentedController(presented, presentingController: presenting, sourceController: source)
     }
+    
+    
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return presentAnimation.animationControllerForDismissedController(dismissed)
     }
+    
+    
     //MARK: -- UIScrollView Delegate
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         UIView.animateWithDuration(0.5) { () -> Void in

@@ -34,20 +34,27 @@ class ArticleController: UIViewController ,UIWebViewDelegate,UIScrollViewDelegat
         }
 
         if let title = inputDic!["title"] as? String {
-            titleLabel.text = title
+//            titleLabel.text = title
+            navigationItem.title = title
         }
         if let _url = inputDic!["url"] as? String {
             let url = NSURL(string: _url)
+            
+            print("web url -> \n \(_url)")
 
             webView.loadRequest(NSURLRequest(URL: url!))
             webView.scrollView.delegate = self
         }
         fetchShareImage()
     }
+    
+    
     @IBAction func dismiss(sender: AnyObject) {
         navigationController?.popViewControllerAnimated(true)
 //        self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    
     @IBAction func more() {
         let alert = UIAlertController(title: "请选择操作内容", message: nil, preferredStyle: .ActionSheet)
         let reportAction = UIAlertAction(title: "举报", style: .Destructive) { [unowned self](action) -> Void in
@@ -144,6 +151,8 @@ class ArticleController: UIViewController ,UIWebViewDelegate,UIScrollViewDelegat
         presentViewController(activityViewController, animated: true, completion: nil)
 
     }
+    
+    
     func fetchShareImage() {
         let imageUrl = inputDic!["contentImg"] as! String
         ImageDownloader(name: "self").downloadImageWithURL(
@@ -154,16 +163,23 @@ class ArticleController: UIViewController ,UIWebViewDelegate,UIScrollViewDelegat
                 }
         }
     }
+    
+    
     //MARK: -- UIWebViewDelegate
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
         self.hideHUD()
     }
+    
+    
     func webViewDidFinishLoad(webView: UIWebView) {
         self.hideHUD()
         changeReadState()
     }
+    
+    
     func webViewDidStartLoad(webView: UIWebView) {
         self.showHUD()
+        
     }
     
     //MARK: --

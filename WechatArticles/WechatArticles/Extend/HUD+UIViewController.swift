@@ -14,10 +14,25 @@ let loadingViewTag = 1000
 extension UIViewController {
     
     public func showHUD() {
-        HUD.show(.Progress)
+        if self.view.viewWithTag(loadingViewTag) != nil {
+            self.view.viewWithTag(loadingViewTag)?.removeFromSuperview()
+        }
+        
+        let view = WAHUDView()
+        view.tag = loadingViewTag
+        
+        self.view.addSubview(view)
+        
+        view.snp_makeConstraints { (make) in
+            make.center.equalTo(self.view)
+            make.size.equalTo(CGSizeMake(100, 100))
+        }
+
     }
     
     public func hideHUD() {
-        HUD.hide()
+        if self.view.viewWithTag(loadingViewTag) != nil {
+            self.view.viewWithTag(loadingViewTag)?.removeFromSuperview()
+        }
     }
 }

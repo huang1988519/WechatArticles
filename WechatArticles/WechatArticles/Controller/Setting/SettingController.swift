@@ -254,11 +254,6 @@ class SettingController: UITableViewController, CLLocationManagerDelegate,UIView
         if indexPath.row == 0 {
             clearImageCache()
         }
-        if indexPath.row == 1 {
-            let aboutVC = AboutController.Nib()
-            aboutVC.transitioningDelegate = self
-            self.presentViewController(aboutVC, animated: true, completion: nil)
-        }
         /*
         if indexPath.row == 0 {
             if GetUserInfo() != nil && (isLogin == true) {

@@ -32,9 +32,12 @@
 		D91C74AE1D901AB300CDF640 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91C749C1D901AB300CDF640 /* Window.swift */; };
 		D91C74AF1D901AB300CDF640 /* WindowRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91C749D1D901AB300CDF640 /* WindowRootViewController.swift */; };
 		D91C74B11D901C5700CDF640 /* Cus+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91C74B01D901C5700CDF640 /* Cus+UIImageView.swift */; };
+		D98381961D93E3C80068962D /* wa.css in Resources */ = {isa = PBXBuildFile; fileRef = D98381951D93E3C80068962D /* wa.css */; };
+		D98DFB121D93CAA60000144D /* WATabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98DFB111D93CAA60000144D /* WATabbarController.swift */; };
 		D9C6C6181C1E96B2007E6D6F /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9C6C6171C1E96B2007E6D6F /* Bugly.framework */; };
 		D9C6C61C1C1FBAF2007E6D6F /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6C61A1C1FBAF2007E6D6F /* Cache.swift */; };
 		D9C6C61D1C1FBAF2007E6D6F /* CacheObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C6C61B1C1FBAF2007E6D6F /* CacheObject.swift */; };
+		D9C7A5561D93FEC300DCF1E9 /* WAHUDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C7A5551D93FEC300DCF1E9 /* WAHUDView.swift */; };
 		D9D7EBE21C143308006633D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D7EBE11C143308006633D9 /* AppDelegate.swift */; };
 		D9D7EBE71C143308006633D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9D7EBE51C143308006633D9 /* Main.storyboard */; };
 		D9D7EBE91C143308006633D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9D7EBE81C143308006633D9 /* Assets.xcassets */; };
@@ -207,9 +210,12 @@
 		D91C749C1D901AB300CDF640 /* Window.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
 		D91C749D1D901AB300CDF640 /* WindowRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowRootViewController.swift; sourceTree = "<group>"; };
 		D91C74B01D901C5700CDF640 /* Cus+UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Cus+UIImageView.swift"; sourceTree = "<group>"; };
+		D98381951D93E3C80068962D /* wa.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = wa.css; sourceTree = "<group>"; };
+		D98DFB111D93CAA60000144D /* WATabbarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WATabbarController.swift; sourceTree = "<group>"; };
 		D9C6C6171C1E96B2007E6D6F /* Bugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bugly.framework; sourceTree = "<group>"; };
 		D9C6C61A1C1FBAF2007E6D6F /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		D9C6C61B1C1FBAF2007E6D6F /* CacheObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheObject.swift; sourceTree = "<group>"; };
+		D9C7A5551D93FEC300DCF1E9 /* WAHUDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WAHUDView.swift; sourceTree = "<group>"; };
 		D9D7EBDE1C143308006633D9 /* WechatArticles.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WechatArticles.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9D7EBE11C143308006633D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9D7EBE61C143308006633D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -465,8 +471,10 @@
 				D9D7EC3D1C1433F0006633D9 /* Transform */,
 				D9D7EC3F1C1433F0006633D9 /* ViewModel */,
 				D9D7EBE11C143308006633D9 /* AppDelegate.swift */,
+				D98DFB111D93CAA60000144D /* WATabbarController.swift */,
 				D9D7EBE51C143308006633D9 /* Main.storyboard */,
 				D9D7EBE81C143308006633D9 /* Assets.xcassets */,
+				D98381951D93E3C80068962D /* wa.css */,
 				D9D7F0261C1439AC006633D9 /* WechatArticle-Bridging-Header.h */,
 				D9D7EC0F1C1433F0006633D9 /* Base.lproj */,
 				D9D7EBED1C143308006633D9 /* Info.plist */,
@@ -594,6 +602,7 @@
 				D9D7EC331C1433F0006633D9 /* Cus+UIColor.swift */,
 				D9D7EC351C1433F0006633D9 /* HUD+UIViewController.swift */,
 				D9D7EC361C1433F0006633D9 /* SwiftCountdownButton.swift */,
+				D9C7A5551D93FEC300DCF1E9 /* WAHUDView.swift */,
 			);
 			path = Extend;
 			sourceTree = "<group>";
@@ -946,6 +955,7 @@
 				D9D7EC411C1433F0006633D9 /* LaunchScreen.storyboard in Resources */,
 				D90003021C86E0D300DCE04C /* cert.pem in Resources */,
 				D9D7EBE91C143308006633D9 /* Assets.xcassets in Resources */,
+				D98381961D93E3C80068962D /* wa.css in Resources */,
 				D9D7EF931C14380C006633D9 /* LoadingView.xib in Resources */,
 				D9D7EBE71C143308006633D9 /* Main.storyboard in Resources */,
 				D91C74A11D901AB300CDF640 /* Info.plist in Resources */,
@@ -1052,6 +1062,7 @@
 				D9D7F02D1C143A5D006633D9 /* String-Extras.swift in Sources */,
 				D9D7EC5A1C1433F0006633D9 /* SwiftCountdownButton.swift in Sources */,
 				D91C74A91D901AB300CDF640 /* PKHUDSquareBaseView.swift in Sources */,
+				D98DFB121D93CAA60000144D /* WATabbarController.swift in Sources */,
 				D9D7F03E1C143AB3006633D9 /* String+Timepiece.swift in Sources */,
 				D9D7EF381C1435A8006633D9 /* Type.swift in Sources */,
 				D9D7F0551C143E68006633D9 /* KingfisherOptionsInfo.swift in Sources */,
@@ -1086,6 +1097,7 @@
 				D9C6C61C1C1FBAF2007E6D6F /* Cache.swift in Sources */,
 				D9D7F0121C14390D006633D9 /* MJRefreshComponent.m in Sources */,
 				D9D7F0511C143E68006633D9 /* ImageTransition.swift in Sources */,
+				D9C7A5561D93FEC300DCF1E9 /* WAHUDView.swift in Sources */,
 				D9D7EF631C143791006633D9 /* JLToastCenter.swift in Sources */,
 				D91C74B11D901C5700CDF640 /* Cus+UIImageView.swift in Sources */,
 				D9D7EF8B1C14380C006633D9 /* DesignableTabBarController.swift in Sources */,

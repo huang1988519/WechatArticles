@@ -50,6 +50,13 @@ public class Request: NSObject {
     
     deinit {
         log.warning("消除")
+        
+        if let _t = task {
+            _t.cancel()
+        }
+        _successBlock = nil
+        _faildBlock   = nil
+        task = nil
     }
     //配置 生成 request
     func configRequest() {

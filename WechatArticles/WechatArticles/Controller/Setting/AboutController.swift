@@ -17,11 +17,16 @@ class AboutController: UIViewController,UIWebViewDelegate {
         let vc = MainSB().instantiateViewControllerWithIdentifier("AboutController")
         return (vc as? AboutController)!
     }
+    
+    
     @IBAction func dismiss(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "关于"
         
         let url = NSURL(string: "https://huang1988519.github.io/2015/11/22/%E5%85%B3%E4%BA%8E%E5%BE%AE%E9%98%85%E8%AF%BB/")
         let request = NSURLRequest(URL: url!)
